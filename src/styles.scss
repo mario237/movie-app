@@ -1,0 +1,77 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap");
+
+$bgColor: #131722;
+$lightBgColor: #24baef;
+$bgTransparent: rgba(36, 186, 239, 0.6);
+$fontColor: #fff;
+$borderColor: #a8a8a83d;
+$borderHeight: 1px;
+$secondFontColor: #949cb0;
+$errorColor: #d50000;
+$welcomeColor:#00c853;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $bgColor;
+    font-family: "Montserrat Alternates";
+    color: $fontColor;
+}
+
+a {
+    color: $fontColor;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.active-link,
+a:hover {
+    color: $lightBgColor;
+}
+
+.brdr {
+    background-color: $borderColor;
+    height: $borderHeight;
+}
+
+.lightBgColor {
+    background-color: $lightBgColor;
+    color: $fontColor;
+}
+
+.error {
+    color: $errorColor;
+}
+
+.welcome-message-container{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: $welcomeColor;
+    color: $fontColor;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.error-message-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: $errorColor;
+    color: $fontColor;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
