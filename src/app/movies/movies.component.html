@@ -1,1 +1,52 @@
-<p>movies works!</p>
+<app-loadingspinner [showSpinner]="isLoading"></app-loadingspinner>
+
+
+<div class="container my-3">
+    <div class="row" id="page-content">
+        <div *ngFor="let movie of popularMoviesList ; let i = index" class="col-md-3 my-2">
+            <div class="movie-item">
+                <!--  -->
+                <a class="movie-container text-decoration-none" [routerLink]='["/movieDetails", "movie" ,movie.id]'>
+                    <div class="movie-image">
+                        <img class="w-100 rounded" [src]="imgPrefix+movie.poster_path" alt="">
+
+                        <span class="vote lightBgColor">{{movie.vote_average}}</span>
+
+                        <div class="movie-overlay">
+                            <button class="btn btn-info">See more</button>
+                        </div>
+                    </div>
+
+
+                    <h3 class="movie-title" *ngIf="movie.title != null ; else movieName">{{movie.title}}</h3>
+                    <ng-container *ngTemplateOutlet="movieName;
+                    context:{name:movie.name}"></ng-container>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- [boundaryLinks]="true" -->
+    <!-- <ngb-pagination class="pagination-container d-flex justify-content-center" [page    ]="totalPagesNumber"
+        [maxSize]="5" (pageChange)="goToPage($event)">
+    </ngb-pagination> -->
+
+    <ngb-pagination class="pagination-container d-flex justify-content-center"
+    (pageChange)="goToPage($event)"
+    [(page)]="currentPageNumber"
+    [maxSize]="5"
+    [rotate]="true"
+    [collectionSize]="5000">
+    
+    <ng-template ngbPaginationPrevious>Prev</ng-template>
+    <ng-template ngbPaginationNext>Next</ng-template>
+</ngb-pagination>
+
+
+</div>
+
+
+<ng-template #movieName let-name="name">
+    <h3 class="movie-title">{{ name }}</h3>
+</ng-template>

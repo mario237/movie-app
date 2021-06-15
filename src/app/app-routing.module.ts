@@ -13,10 +13,11 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 const routes: Routes = [
   {path:'' , redirectTo:'home' , pathMatch:'full'},
   {path:'home' , canActivate:[AuthGuard] , component:HomeComponent},
-  {path:'movies', canActivate:[AuthGuard] , component:MoviesComponent},
+  {path:'movies/:page', canActivate:[AuthGuard] , component:MoviesComponent},
   {path:'tv', canActivate:[AuthGuard] , component:TvComponent},
   {path:'people', canActivate:[AuthGuard] , component:PeopleComponent},
   {path:'movieDetails/:type/:id', canActivate:[AuthGuard] , component:MovieDetailsComponent},
+  
 
 
   {path:'login' , component:LoginComponent},

@@ -1,6 +1,7 @@
 import { MoviesService } from './../movies.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
@@ -15,11 +16,15 @@ export class MovieDetailsComponent implements OnInit {
   tvID:string = '';
   imgPrefix: string = "https://image.tmdb.org/t/p/w500";
   mediaGenres: any[] = [];
-  imdbPrefix: string = 'https://www.imdb.com/title/'
+  imdbPrefix: string = 'https://www.imdb.com/title/';
+  isLoading:boolean = true
 
 
 
-  constructor(private _MoviesService: MoviesService, private _ActivatedRoute: ActivatedRoute) { }
+  constructor(private _MoviesService: MoviesService, private _ActivatedRoute: ActivatedRoute) {
+   }
+
+ 
 
   ngOnInit(): void {
     this.mediaType = this._ActivatedRoute.snapshot.params.type;
@@ -37,6 +42,10 @@ export class MovieDetailsComponent implements OnInit {
         this.mediaGenres = response.genres;
       })   
     }
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
   }
 
 }

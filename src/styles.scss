@@ -2,6 +2,8 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap");
 
+
+
 $bgColor: #131722;
 $lightBgColor: #24baef;
 $bgTransparent: rgba(36, 186, 239, 0.6);
@@ -75,3 +77,13 @@ a:hover {
     align-items: center;
     justify-content: center;
 }
+
+.spinner-border{
+    width: 1em;
+    height: 1em;
+    border-width: 3px !important;
+}
+
+
+/* Importing Bootstrap SCSS file. */
+// @import '~bootstrap/scss/bootstrap';

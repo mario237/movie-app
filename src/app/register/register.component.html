@@ -14,7 +14,7 @@
 
         <div class="form-group">
             <label for="first_name">First name</label>
-            <input formControlName='first_name' class="form-control" type="text"
+            <input [class.is-valid]="registerForm.get('first_name')?.status=='VALID'" formControlName='first_name' class="form-control" type="text"
                 id="first_name">
 
             <div *ngIf='registerForm.get("first_name")?.errors != null && registerForm.get("first_name")?.touched' class="error my-2">
@@ -27,7 +27,7 @@
 
         <div class="form-group">
             <label for="last_name">Last name</label>
-            <input formControlName='last_name' class="form-control" type="text"
+            <input [class.is-valid]="registerForm.get('last_name')?.status=='VALID'" formControlName='last_name' class="form-control" type="text"
                 id="last_name">
 
             <div *ngIf='registerForm.get("last_name")?.errors != null && registerForm.get("last_name")?.touched' class="error my-2">
@@ -40,7 +40,7 @@
 
         <div class="form-group">
             <label for="age">Age</label>
-            <input formControlName='age' class="form-control" type="number"
+            <input [class.is-valid]="registerForm.get('age')?.status=='VALID'" formControlName='age' class="form-control" type="number"
                 id="age">
 
                 <div *ngIf='registerForm.get("age")?.errors != null && registerForm.get("age")?.touched' class="error my-2">
@@ -53,7 +53,7 @@
 
         <div class="form-group">
             <label for="email">Email Address</label>
-            <input formControlName='email' class="form-control" type="email"
+            <input [class.is-valid]="registerForm.get('email')?.status=='VALID'" formControlName='email' class="form-control" type="email"
                 id="email">
 
             <div *ngIf='registerForm.get("email")?.errors != null && registerForm.get("email")?.touched' class="error my-2">
@@ -68,7 +68,7 @@
 
         <div class="form-group">
             <label for="password">Password</label>
-            <input formControlName='password' class="form-control"
+            <input [class.is-valid]="registerForm.get('password')?.status=='VALID'" formControlName='password' class="form-control"
                 type="password" id="password">
 
             <div *ngIf='registerForm.get("password")?.errors != null && registerForm.get("password")?.touched' class="error my-2">
@@ -84,7 +84,11 @@
 
 
 
-        <button [disabled]='registerForm.invalid' class="btn btn-info" type="submit">Register</button>
+        <button [disabled]='registerForm.invalid' class="btn btn-info" type="submit">
+            <span *ngIf="!isLoading">Register</span>
+            <div *ngIf="isLoading" class="spinner-border">
+            </div>
+        </button>
 
     </form>
 

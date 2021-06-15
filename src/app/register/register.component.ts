@@ -19,7 +19,9 @@ export class RegisterComponent implements OnInit {
     $('.error-message-container').hide();
   }
 
-  errorMessage: string = ''
+  errorMessage: string = '';
+  isLoading:boolean = false;
+
 
   registerForm = new FormGroup({
     first_name: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
@@ -30,12 +32,15 @@ export class RegisterComponent implements OnInit {
   })
 
   submitRegisterForm(registerFormData: FormGroup) {
+    this.isLoading = true;
 
     this._AuthService.makeUserRegistration(registerFormData.value).subscribe((response) => {
       if (response.message == 'success') {
+        this.isLoading = false;
         this._Router.navigate(['/login'])
       }
       else {
+        this.isLoading = false;
         this.errorMessage = response.errors.email.message
         this.showErrorALert()
       }

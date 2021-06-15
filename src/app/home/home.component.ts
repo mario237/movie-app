@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   trendingMoviesList: any = [];
   trendingTvShowList: any = [];
   trendingPersonsList: any = [];
+  isLoading:boolean = true;
 
 
   imgPrefix: string = "https://image.tmdb.org/t/p/w500";
@@ -37,6 +38,9 @@ export class HomeComponent implements OnInit {
       this.trendingTvShowList = data.results;
     })
 
+   setTimeout(() => {
+    this.isLoading = false;
+   }, 1000);
 
   }
 

@@ -1,3 +1,6 @@
+<app-loadingspinner [showSpinner]="isLoading"></app-loadingspinner>
+
+
 <div class="container-fluid my-4">
 
     <div class="row" *ngIf="mediaType=='movie'">
@@ -7,7 +10,7 @@
 
         <div class="col-md-9">
             <div class="movie-data mx-lg-2 my-3">
-                <h2 class="font-weight-bold">{{movieDetails.original_title}}</h2>
+                <h2 class="font-weight-bold">{{movieDetails.title}}</h2>
                 <p class="light-color">{{movieDetails.tagline}}</p>
         
                 <div class="movie-genres d-flex flex-wrap">

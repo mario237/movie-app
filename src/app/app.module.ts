@@ -13,7 +13,16 @@ import { PeopleComponent } from './people/people.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { MovieDetailsComponent } from './movie-details/movie-details.component'
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { HomeheaderComponent } from './homeheader/homeheader.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { LoadingspinnerComponent } from './loadingspinner/loadingspinner.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+
+
+
 
 @NgModule({
   declarations: [
@@ -26,13 +35,19 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component'
     TvComponent,
     PeopleComponent,
     NotfoundComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    HomeheaderComponent,
+    LoadingspinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    CarouselModule,
+    NgbModule,
+    NgbPaginationModule, NgbAlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]

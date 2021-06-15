@@ -12,6 +12,7 @@ declare let $: any;
 export class LoginComponent implements OnInit {
 
   errorMessage: string = '';
+  isLoading:boolean = false;
 
 
   constructor(private _AuthService: AuthService, private _Router: Router) { }
@@ -31,14 +32,17 @@ export class LoginComponent implements OnInit {
 
   submitLoginForm(loginFormData: FormGroup) {
 
+    this.isLoading = true;
 
     this._AuthService.makeUserLogin(loginFormData.value).subscribe((response) => {
       if (response.message == 'success') {
+        this.isLoading = false;
         localStorage.setItem('currentUserToken', response.token);
         this._AuthService.saveCurrentUser();
         this._Router.navigate(['/home']);
       }
       else {
+        this.isLoading = false;
         this.errorMessage = response.message;
         this.showErrorALert()
 

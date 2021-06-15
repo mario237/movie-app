@@ -38,6 +38,9 @@ $lightBgColor: #24baef;
 }
 
 @media screen and (max-width: 992px) {
+    .navbar{
+        padding: 0.5rem 1rem;
+    }
     #navbarSupportedContent ul li {
         background-color: $bgColor;
         margin: 10px 0;
