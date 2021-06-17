@@ -1,25 +1,27 @@
+import { MediaDetailsComponent } from './components/media-details/media-details.component';
+import { LoadingspinnerComponent } from './components/loadingspinner/loadingspinner.component';
+import { HomeheaderComponent } from './components/homeheader/homeheader.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { PeopleComponent } from './components/people/people.component';
+import { TvComponent } from './components/tv/tv.component';
+import { MoviesComponent } from './components/movies/movies.component';
+import { HomeComponent } from './components/home/home.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { MoviesComponent } from './movies/movies.component';
-import { TvComponent } from './tv/tv.component';
-import { PeopleComponent } from './people/people.component';
-import { NotfoundComponent } from './notfound/notfound.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { HomeheaderComponent } from './homeheader/homeheader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { LoadingspinnerComponent } from './loadingspinner/loadingspinner.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -35,7 +37,7 @@ import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
     TvComponent,
     PeopleComponent,
     NotfoundComponent,
-    MovieDetailsComponent,
+    MediaDetailsComponent,
     HomeheaderComponent,
     LoadingspinnerComponent
   ],
@@ -47,7 +49,7 @@ import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     CarouselModule,
     NgbModule,
-    NgbPaginationModule, NgbAlertModule
+    NgbPaginationModule, NgbAlertModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,22 +1,23 @@
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { NotfoundComponent } from './notfound/notfound.component';
-import { PeopleComponent } from './people/people.component';
-import { TvComponent } from './tv/tv.component';
-import { MoviesComponent } from './movies/movies.component';
-import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { PeopleComponent } from './components/people/people.component';
+import { TvComponent } from './components/tv/tv.component';
+import { MoviesComponent } from './components/movies/movies.component';
+import { HomeComponent } from './components/home/home.component';
+import { MediaDetailsComponent } from './components/media-details/media-details.component';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth.guard';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {path:'' , redirectTo:'home' , pathMatch:'full'},
   {path:'home' , canActivate:[AuthGuard] , component:HomeComponent},
   {path:'movies/:page', canActivate:[AuthGuard] , component:MoviesComponent},
-  {path:'tv', canActivate:[AuthGuard] , component:TvComponent},
-  {path:'people', canActivate:[AuthGuard] , component:PeopleComponent},
-  {path:'movieDetails/:type/:id', canActivate:[AuthGuard] , component:MovieDetailsComponent},
+  {path:'tvshows/:page', canActivate:[AuthGuard] , component:TvComponent},
+  {path:'people/:page', canActivate:[AuthGuard] , component:PeopleComponent},
+  {path:'mediaDetails/:type/:id', canActivate:[AuthGuard] , component:MediaDetailsComponent},
   
 
 

@@ -85,5 +85,45 @@ a:hover {
 }
 
 
-/* Importing Bootstrap SCSS file. */
-// @import '~bootstrap/scss/bootstrap';
+/*******************media item style************************/
+.media-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.media-image .vote {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.media-overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    z-index: 2;
+}
+
+.media-image:hover .media-overlay {
+    top: 0;
+}
+
+.media-title {
+    font-size: 1.1rem;
+    margin: 15px 0;
+}
+
+/*******************end media item style************************/
