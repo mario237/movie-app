@@ -12,13 +12,17 @@ declare let $: any;
 export class LoginComponent implements OnInit {
 
   errorMessage: string = '';
-  isLoading:boolean = false;
+  isLoading: boolean = false;
 
 
   constructor(private _AuthService: AuthService, private _Router: Router) { }
 
   ngOnInit(): void {
     $('.error-message-container').hide();
+
+    if (this._AuthService.isLoggedIn()) {
+      this._Router.navigate(['/home']);
+    }
   }
 
 

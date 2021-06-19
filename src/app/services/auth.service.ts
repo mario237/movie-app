@@ -39,6 +39,10 @@ export class AuthService {
     return this._HttpClient.post('https://route-egypt-api.herokuapp.com/signin', formData)
   }
 
+  isLoggedIn():boolean{
+    return !!localStorage.getItem('currentUserToken')
+  }
+
   makeUserLogout(){
     this.currentUser.next(null);
     localStorage.removeItem('currentUserToken');

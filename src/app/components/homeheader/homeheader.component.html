@@ -1,5 +1,5 @@
 <section class="d-flex align-items-center">
-  
+
   <div class="overlay-bg"></div>
 
   <div class="container">
@@ -9,7 +9,7 @@
       <ng-container *ngFor="let movie of trendingMovies">
         <ng-template carouselSlide [id]="movie.id">
           <a class="movie-container text-decoration-none" [routerLink]='["/mediaDetails", "movie" ,movie.id]'>
-            <img class="w-100" [src]="imgPrefix+movie.poster_path" alt="">
+            <img [src]="imgPrefix+movie.poster_path" alt="">
           </a>
         </ng-template>
       </ng-container>

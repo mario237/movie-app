@@ -2,6 +2,9 @@ import { MoviesService } from './../../services/movies.service';
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
+
+
+
 @Component({
   selector: 'app-homeheader',
   templateUrl: './homeheader.component.html',
@@ -21,13 +24,13 @@ export class HomeheaderComponent implements OnInit {
     dots: false,
     navSpeed: 100,
     nav:false,
-    autoHeight: false,
+    autoHeight: true,
     responsive: {
       0: {
-        items: 0
+        items: 2
       },
       400: {
-        items: 2
+        items: 3
       },
       740: {
         items: 4
@@ -39,11 +42,17 @@ export class HomeheaderComponent implements OnInit {
 
   }
 
+
+  
+
+
+
   imgPrefix: string = "https://image.tmdb.org/t/p/w500";
 
 
-
  ngOnInit(): void {
+
+
    this._MoviesService.getTrending('movie').subscribe((response)=>{
     for(let i=0 ; i< response.results.length ; i++){
       if(response.results[i].media_type != 'tv'){
