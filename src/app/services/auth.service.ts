@@ -11,6 +11,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class AuthService {
 
 
+   BASE_URL = 'http://movie.test/api/auth';
 
   currentUser = new BehaviorSubject(null);
 
@@ -25,18 +26,16 @@ export class AuthService {
   saveCurrentUser() {
     let token: any = localStorage.getItem('currentUserToken');
     this.currentUser.next(jwtDecode(token));
-    console.log(this.currentUser);
-
   }
 
 
   makeUserRegistration(formData: object): Observable<any> {
-    return this._HttpClient.post('https://route-egypt-api.herokuapp.com/signup', formData)
+    return this._HttpClient.post(`${this.BASE_URL}/register`, formData)
   }
 
 
   makeUserLogin(formData: object): Observable<any> {
-    return this._HttpClient.post('https://route-egypt-api.herokuapp.com/signin', formData)
+    return this._HttpClient.post(`${this.BASE_URL}/login`, formData)
   }
 
   isLoggedIn():boolean{

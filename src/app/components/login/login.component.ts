@@ -39,9 +39,9 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
 
     this._AuthService.makeUserLogin(loginFormData.value).subscribe((response) => {
-      if (response.message == 'success') {
+      if (response.success) {
         this.isLoading = false;
-        localStorage.setItem('currentUserToken', response.token);
+        localStorage.setItem('currentUserToken', response.data.token);
         this._AuthService.saveCurrentUser();
         this._Router.navigate(['/home']);
       }
@@ -58,9 +58,9 @@ export class LoginComponent implements OnInit {
 
   showErrorALert() {
     $('.error-message-container').fadeIn(400);
-    setTimeout(function () {
-      $('.error-message-container').fadeOut('slow');
-    }, 3000);
+    // setTimeout(function () {
+    //   $('.error-message-container').fadeOut('slow');
+    // }, 3000);
   }
 
 
