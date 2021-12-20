@@ -10,27 +10,25 @@ declare let $:any;
 })
 export class TvComponent implements OnInit {
   
-  popularTVShowsList:any[] = [];
+  tvShowsList:any[] = [];
   isLoading: boolean = false;
-  imgPrefix: string = "https://image.tmdb.org/t/p/w500";
-  currentPageNumber:number = 1;
+  imgPrefix: string = "http://movie.test/";
 
+  
 
  
   
 
   constructor(public _MoviesService: MoviesService, public _ActivatedRoute: ActivatedRoute, private _Router: Router) { }
 
-  getMovies(page: number) {
+  getTvShows() {
 
     this.isLoading = true;
 
-    this._MoviesService.getPopularMedia(page , "tv").subscribe((data) => {
+    this._MoviesService.getTvShows().subscribe((response) => {
 
 
-      this.popularTVShowsList = data.results;
-
-      console.log(this.popularTVShowsList);
+      this.tvShowsList = response.data;
       
 
 
@@ -46,30 +44,10 @@ export class TvComponent implements OnInit {
 
   }
 
-  goToPage(page:number) {
-    this._Router.navigate(['/tvshows', page]);
-  }
 
 
   ngOnInit(): void {
-    this._ActivatedRoute.params.subscribe((params)=>{
-
-      this.currentPageNumber = params.page;
-
-      $('html, body').animate({
-        scrollTop: 0
-      }, 500);
-  
-  
-      this.getMovies(params.page);
-            
-    })
-
-
-
-    
-    
-     
+    this.getTvShows()  
   }
 
 }

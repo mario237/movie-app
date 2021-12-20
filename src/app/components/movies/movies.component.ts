@@ -8,27 +8,35 @@ declare let $: any;
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss']
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent implements OnInit{
 
-  popularMoviesList: any = [];
+  moviesList: any = [];
   isLoading: boolean = false;
-  imgPrefix: string = "https://image.tmdb.org/t/p/w500";
-  currentPageNumber: number = 1;
+  imgPrefix: string = "http://movie.test/";
 
+  
 
 
 
   constructor(public _MoviesService: MoviesService, public _ActivatedRoute: ActivatedRoute, private _Router: Router) { }
 
 
-  getMovies(page: number) {
+
+
+
+  ngOnInit(): void {
+   this.getMovies()
+  }
+
+
+  getMovies() {
 
     this.isLoading = true;
 
-    this._MoviesService.getPopularMedia(page, "movie").subscribe((data) => {
+    this._MoviesService.getMovies().subscribe((response) => {
 
 
-      this.popularMoviesList = data.results;
+      this.moviesList = response.data;
 
 
 
@@ -47,32 +55,9 @@ export class MoviesComponent implements OnInit {
 
   }
 
-  goToPage(page: number) {
-    this._Router.navigate(['/movies', page]);
-  }
-
-
-  ngOnInit(): void {
-    this._ActivatedRoute.params.subscribe((params) => {
-      console.log('param = ' + params.page);
-
-      this.currentPageNumber = params.page;
-
-      $('html, body').animate({
-        scrollTop: 0
-      }, 500);
-
-
-      this.getMovies(params.page);
-
-    })
 
 
 
-
-
-
-  }
 
 
 

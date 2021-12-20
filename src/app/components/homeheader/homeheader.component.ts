@@ -47,19 +47,21 @@ export class HomeheaderComponent implements OnInit {
 
 
 
-  imgPrefix: string = "https://image.tmdb.org/t/p/w500";
+  imgPrefix: string = "http://movie.test/";
 
 
  ngOnInit(): void {
 
 
-   this._MoviesService.getTrending('movie').subscribe((response)=>{
-    for(let i=0 ; i< response.results.length ; i++){
-      if(response.results[i].media_type != 'tv'){
-        this.trendingMovies.push(response.results[i]);
+   this._MoviesService.getMovies().subscribe((response)=>{
+    
+    for(let i=0 ; i< response.data.length ; i++){
+      if(i < 10){
+        this.trendingMovies.push(response.data[i]);
         
       }
     }
+
    })
 }
 

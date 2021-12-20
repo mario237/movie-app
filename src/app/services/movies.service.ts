@@ -6,19 +6,24 @@ import { Injectable } from '@angular/core';
 })
 export class MoviesService {
 
+  BASE_URL = 'http://movie.test/api';
+
   constructor(private _HttpClient:HttpClient) { }
 
-
-  getTrending(mediaType:string):Observable<any>{
-    return this._HttpClient.get(`https://api.themoviedb.org/3/trending/${mediaType}/day?api_key=c657287b055c076418bfc63c59f64465`);
+  getMovies():Observable<any>{
+    return this._HttpClient.get(`${this.BASE_URL}/movies`);
   }
 
-  getMediaDetails(mediaType:string , mediaID:string):Observable<any>{
-    return this._HttpClient.get(`https://api.themoviedb.org/3/${mediaType}/${mediaID}?api_key=c657287b055c076418bfc63c59f64465`)
+  getTvShows():Observable<any>{
+    return this._HttpClient.get(`${this.BASE_URL}/tv-shows`);
   }
 
-  getPopularMedia(pageNumber:number , mediaType:string):Observable<any>{
-   return this._HttpClient.get(`https://api.themoviedb.org/3/${mediaType}/popular?api_key=c657287b055c076418bfc63c59f64465&language=en-US&page=${pageNumber}`);
+ 
+  getMovieById(id:string):Observable<any>{
+    return this._HttpClient.get(`${this.BASE_URL}/movie/${id}`)
   }
 
+  getTvShowById(id:string):Observable<any>{
+    return this._HttpClient.get(`${this.BASE_URL}/tv-show/${id}`)
+  }
 }

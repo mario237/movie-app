@@ -10,9 +10,9 @@ declare let $: any;
 })
 export class PeopleComponent implements OnInit {
 
-  popularPeopleList: any = [];
+  actorsList: any = [];
   isLoading: boolean = false;
-  imgPrefix: string = "https://image.tmdb.org/t/p/w500";
+  imgPrefix: string = "http://movie.test/";
   currentPageNumber: number = 1;
 
   constructor(public _PeopleService: PeopleService, public _ActivatedRoute: ActivatedRoute, private _Router: Router) { }
@@ -23,10 +23,12 @@ export class PeopleComponent implements OnInit {
 
     this.isLoading = true;
 
-    this._PeopleService.getPeople(page).subscribe((data) => {
+    this._PeopleService.getActors().subscribe((response) => {
 
+      console.log(response.data);
+      
 
-      this.popularPeopleList = data.results;
+      this.actorsList = response.data;
 
 
 

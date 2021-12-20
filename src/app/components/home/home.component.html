@@ -25,12 +25,11 @@
 
         <div *ngFor="let movie of trendingMoviesList ; let i = index" class="col-md-2 my-2">
             <div *ngIf="i < 10" class="movie-item">
-                <!--  -->
                 <a class="movie-container text-decoration-none" [routerLink]='["/mediaDetails", "movie" ,movie.id]'>
                     <div class="movie-image">
-                        <img class="w-100" [src]="imgPrefix+movie.poster_path" alt="">
+                        <img class="w-100" [src]="imgPrefix+movie.image" alt="">
                         
-                        <span class="vote lightBgColor">{{movie.vote_average}}</span>
+                        <span class="vote lightBgColor">{{movie.vote}}</span>
 
                         <div class="movie-overlay">
                             <button class="btn btn-info">See more</button>
@@ -38,9 +37,8 @@
                     </div>
 
 
-                    <h3 class="movie-title" *ngIf="movie.title != null ; else movieName">{{movie.title}}</h3>
-                    <ng-container *ngTemplateOutlet="movieName;
-                    context:{name:movie.name}"></ng-container>
+                    <h3 class="movie-title">{{movie.title}}</h3>
+                    
                 </a>
 
             </div>
@@ -71,9 +69,9 @@
             <div *ngIf="i < 10" class="movie-item">
                 <a class="movie-container text-decoration-none" [routerLink]='["/mediaDetails" , "tv",tv.id]'>
                     <div class="movie-image">
-                        <img class="w-100" [src]="imgPrefix+tv.poster_path" alt="">
+                        <img class="w-100" [src]="imgPrefix+tv.image" alt="">
                         
-                        <span class="vote lightBgColor">{{tv.vote_average}}</span>
+                        <span class="vote lightBgColor">{{tv.vote}}</span>
 
                         <div class="movie-overlay">
                             <button class="btn btn-info">See more</button>
@@ -81,7 +79,7 @@
                     </div>
 
 
-                    <h3 class="movie-title">{{tv.original_name}}</h3>
+                    <h3 class="movie-title">{{tv.title}}</h3>
                     
                 </a>
 
@@ -102,6 +100,3 @@
 
 
 
-<ng-template #movieName let-name="name">
-    <h3 class="movie-title">{{ name }}</h3>
-</ng-template>

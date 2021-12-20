@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
     age: new FormControl(null, [Validators.required, Validators.min(18), Validators.max(45)]),
     email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, [Validators.required, Validators.pattern('^[A-Z][a-z0-9\d@$%#&]{8,}$')]),
+    user_type: new FormControl(0)
   })
 
   submitRegisterForm(registerFormData: FormGroup) {

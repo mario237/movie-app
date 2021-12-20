@@ -17,25 +17,35 @@ export class HomeComponent implements OnInit {
   isLoading:boolean = true;
 
 
-  imgPrefix: string = "https://image.tmdb.org/t/p/w500";
+  imgPrefix: string = "http://movie.test/";
 
   constructor(private _MoviesService: MoviesService){}
 
   ngOnInit(): void {
-    this._MoviesService.getTrending('movies').subscribe((data) => {
+    this._MoviesService.getMovies().subscribe((response) => {
 
-      for(let i=0 ; i< data.results.length ; i++){
-        if(data.results[i].media_type != 'tv'){
-          this.trendingMoviesList.push(data.results[i]);
+      
+      for(let i=0 ; i< response.data.length ; i++){
+        if(i < 10){
+          this.trendingMoviesList.push(response.data[i]);
           
         }
       }
 
     })
 
-    this._MoviesService.getTrending('tv').subscribe((data) => {
 
-      this.trendingTvShowList = data.results;
+    
+    this._MoviesService.getTvShows().subscribe((response) => {
+
+      
+      for(let i=0 ; i< response.data.length ; i++){
+        if(i < 10){
+          this.trendingTvShowList.push(response.data[i]);
+          
+        }
+      }
+
     })
 
    setTimeout(() => {
